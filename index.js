@@ -23,14 +23,14 @@ const initInputSave = () => {
     for (const field of fields) {
       field.addEventListener('input', () => {
         saveFormData(field);
-      })
+      });
     }
 
     window.addEventListener('DOMContentLoaded', () => {
       for (const field of fields) {
         restoreFormData(field);
       }
-    })
+    });
   }
 }
 
