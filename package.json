@@ -1,0 +1,16 @@
+{
+  "name": "input-save",
+  "version": "1.0.0",
+  "description": "Береги данные своего пользователя",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild index.js --minify --outfile=./dist/input-save.min.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "esbuild": "0.18.17"
+  }
+}
