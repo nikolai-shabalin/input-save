@@ -5,7 +5,7 @@ const saveFormData = (field) => {
   const value = field.value;
 
   localStorage.setItem(`${inputId}`, value);
-}
+};
 
 const restoreFormData = (field) => {
   const inputId = field.dataset[attributeName];
@@ -14,7 +14,7 @@ const restoreFormData = (field) => {
   if (savedValue !== null) {
     field.value = savedValue;
   }
-}
+};
 
 const initInputSave = () => {
   const fields = document.querySelectorAll(`[data-${attributeName}]`);
@@ -32,6 +32,6 @@ const initInputSave = () => {
       }
     });
   }
-}
+};
 
 export {initInputSave};
