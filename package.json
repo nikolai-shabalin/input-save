@@ -4,13 +4,17 @@
   "description": "Береги данные своего пользователя",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild index.js --minify --outfile=./dist/input-save.min.js"
+    "build": "esbuild index.js --minify --outfile=./dist/input-save.min.js",
+    "eslint": "eslint index.js",
+    "lint": "npm run eslint"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "esbuild": "0.18.17"
+    "esbuild": "0.18.17",
+    "eslint": "8.46.0",
+    "eslint-config-htmlacademy": "9.1.1"
   }
 }

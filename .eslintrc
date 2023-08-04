@@ -1,0 +1,17 @@
+{
+  "env": {
+    "es2022": true,
+    "browser": true
+  },
+  "extends": [
+    "htmlacademy/vanilla"
+  ],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "camelcase": [2, {
+      "ignoreDestructuring": true
+    }]
+  }
+}
