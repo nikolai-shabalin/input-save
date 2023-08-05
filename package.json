@@ -6,7 +6,13 @@
   "scripts": {
     "build": "esbuild index.js --minify --outfile=./dist/input-save.min.js",
     "eslint": "eslint index.js",
-    "lint": "npm run eslint"
+    "lint": "npm run eslint",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "keywords": [],
   "author": "",
@@ -15,6 +21,7 @@
   "devDependencies": {
     "esbuild": "0.18.17",
     "eslint": "8.46.0",
-    "eslint-config-htmlacademy": "9.1.1"
+    "eslint-config-htmlacademy": "9.1.1",
+    "husky": "8.0.3"
   }
 }
