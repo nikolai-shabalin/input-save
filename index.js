@@ -1,6 +1,7 @@
 class InputSave {
   #attributeName = 'localstorage';
-  #fields = document.querySelectorAll(`[data-${this.#attributeName}]`);
+  #selectorField = `[data-${this.#attributeName}]:not([type="password"])`;
+  #fields = document.querySelectorAll(this.#selectorField);
   #inputListeners = new Map();
 
   constructor() {
@@ -47,10 +48,6 @@ class InputSave {
   init() {
     if (this.#fields.length) {
       for (const field of this.#fields) {
-        if (field.type === 'password') {
-          continue;
-        }
-
         const inputListener = this.#saveFormData.bind(this, field);
         this.#inputListeners.set(field, inputListener);
         field.addEventListener('input', inputListener);
