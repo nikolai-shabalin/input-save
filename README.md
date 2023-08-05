@@ -82,35 +82,35 @@
 ```html
 <!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>Мой проект</title>
-</head>
-<body>
-<main>
-  <section>
-    Авторизация
-    <form action="" method="post">
-      <label>
-        Имя:
-        <input type="text" name="name" data-localstorage="name">
-      </label>
-      <button type="submit">Отправить</button>
-    </form>
-  </section>
-</main>
-
-<script type="module">
-  import { InputSave } from './путь-до-файла/input-save.min.js';
-  const inputSave = new InputSave();
-  
-  const form = document.querySelector('form');
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
+  <head>
+    <meta charset="UTF-8">
+    <title>Мой проект</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        Авторизация
+        <form action="" method="post">
+          <label>
+            Имя:
+            <input type="text" name="name" data-localstorage="name">
+          </label>
+          <button type="submit">Отправить</button>
+        </form>
+      </section>
+    </main>
     
-    inputSave.destroy(); /* удаляет слушатели, очищает localStorage и сохранённые значения инпутов */
-  })
-</script>
-</body>
+    <script type="module">
+      import { InputSave } from './путь-до-файла/input-save.min.js';
+      const inputSave = new InputSave();
+      
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        
+        inputSave.destroy(); /* удаляет слушатели, очищает localStorage и сохранённые значения инпутов */
+      })
+    </script>
+  </body>
 </html>
 ```
