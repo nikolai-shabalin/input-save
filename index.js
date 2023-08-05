@@ -47,6 +47,10 @@ class InputSave {
   init() {
     if (this.#fields.length) {
       for (const field of this.#fields) {
+        if (field.type === 'password') {
+          continue;
+        }
+
         const inputListener = this.#saveFormData.bind(this, field);
         this.#inputListeners.set(field, inputListener);
         field.addEventListener('input', inputListener);
