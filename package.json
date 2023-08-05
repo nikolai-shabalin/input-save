@@ -23,5 +23,8 @@
     "eslint": "8.46.0",
     "eslint-config-htmlacademy": "9.1.1",
     "husky": "8.0.3"
+  },
+  "volta": {
+    "node": "20.5.0"
   }
 }
