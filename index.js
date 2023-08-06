@@ -2,7 +2,6 @@ class InputSave {
   #attributeName = 'localstorage';
   #selectorField = `[data-${this.#attributeName}]:not([type="password"])`;
   #fields = document.querySelectorAll(this.#selectorField);
-  #inputListeners = new Map();
 
   constructor() {
     this.init();
@@ -27,11 +26,6 @@ class InputSave {
     field.value = '';
   };
 
-  #removeInputListeners = (field) => {
-    const inputListener = this.#inputListeners.get(field);
-    field.removeEventListener('input', inputListener);
-  };
-
   #clearLocalStorage = (field) => {
     const inputId = field.dataset[this.#attributeName];
     localStorage.removeItem(inputId);
@@ -40,18 +34,24 @@ class InputSave {
   destroy() {
     for (const field of this.#fields) {
       this.#resetFieldValues(field);
-      this.#removeInputListeners(field);
       this.#clearLocalStorage(field);
     }
+    document.removeEventListener('input', this.#handleInput);
   }
 
+  #handleInput = (event) => {
+    const field = event.target;
+    const fieldsArray = [...this.#fields];
+    if (fieldsArray.includes(field)) {
+      this.#saveFormData(field);
+    }
+  };
+
   init() {
+    document.addEventListener('input', this.#handleInput);
+
     if (this.#fields.length) {
       for (const field of this.#fields) {
-        const inputListener = this.#saveFormData.bind(this, field);
-        this.#inputListeners.set(field, inputListener);
-        field.addEventListener('input', inputListener);
-
         this.#restoreFormData(field);
       }
     }
