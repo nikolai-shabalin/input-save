@@ -65,7 +65,7 @@
 
     <script type="module">
       import { InputSave } from './путь-до-файла/input-save.min.js';
-      new InputSave();
+      const inputSave = new InputSave();
     </script>
   </body>
 </html>
@@ -73,6 +73,16 @@
 В этом примере, все поля ввода будут сохранять свои значения в LocalStorage при вводе пользователем данных. При следующей загрузке страницы значения этих полей будут автоматически восстановлены из LocalStorage, если они были сохранены ранее.
 
 Обратите внимание, что использование атрибута localstorage уникально и не должно повторяться среди различных полей формы, чтобы избежать конфликтов в LocalStorage.
+
+## Использование в сборке
+```bash
+npm i --save input-save
+```
+
+```js
+import { InputSave} from "input-save";
+const inputSave = new InputSave();
+```
 
 ## Api
 ### Метод `destroy`
