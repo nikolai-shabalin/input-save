@@ -86,42 +86,43 @@ const inputSave = new InputSave();
 
 ## Api
 ### Метод `destroy`
-Используй метод `destroy()` если хочешь удалить слушатели, очистить localStorage и сохранённые значения инпутов.
+Метод `destroy(form)` может принимать элемент формы для отчистки конкретной формы или использоваться `destroy()` без аргументов, чтобы отчистить все формы.
+
+Используй метод `destroy` если хочешь удалить слушатели, очистить localStorage и сохранённые значения полей формы.
 
 Например, после отправки формы
 
 ```html
-<!doctype html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8">
-    <title>Мой проект</title>
-  </head>
-  <body>
-    <main>
-      <section>
-        Авторизация
-        <form action="" method="post">
-          <label>
-            Имя:
-            <input type="text" name="name" data-localstorage="name">
-          </label>
-          <button type="submit">Отправить</button>
-        </form>
-      </section>
-    </main>
-    
-    <script type="module">
-      import { InputSave } from './путь-до-файла/input-save.min.js';
-      const inputSave = new InputSave();
-      
-      const form = document.querySelector('form');
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        
-        inputSave.destroy(); /* удаляет слушатели, очищает localStorage и сохранённые значения инпутов */
-      })
-    </script>
-  </body>
-</html>
+<section>
+  <h2>Авторизация</h2>
+  <form id="form-name" action="" method="post">
+    <label>
+      Имя:
+      <input type="text" name="name" data-localstorage="name">
+    </label>
+    <button type="submit">Отправить</button>
+  </form>
+</section>
+```
+
+```js
+import { InputSave } from './путь-до-файла/input-save.min.js';
+
+const inputSave = new InputSave();
+
+const form = document.querySelector('#form-name');
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  
+  inputSave.destroy(form); /* удаляет слушатели, очищает localStorage и сохранённые значения инпутов у конкретной формы с id="form-name" */
+});
+```
+
+Если нужно очистить любую форму или все, то вызывай `destroy()` без параметров
+```js
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  inputSave.destroy(); /* удаляет слушатели, очищает localStorage и сохранённые значения инпутов */
+});
 ```
