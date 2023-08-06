@@ -1,6 +1,6 @@
 {
   "name": "input-save",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Береги данные своего пользователя",
   "main": "index.js",
   "scripts": {
