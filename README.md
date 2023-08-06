@@ -24,7 +24,7 @@
     ...  
     <script type="module">
       import { InputSave } from './путь-до-файла/input-save.min.js';
-      new InputSave();
+      const inputSave = new InputSave();
     </script>
   </body>
 </html>
