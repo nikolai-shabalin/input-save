@@ -31,14 +31,6 @@ class InputSave {
     localStorage.removeItem(inputId);
   };
 
-  destroy() {
-    for (const field of this.#fields) {
-      this.#resetFieldValues(field);
-      this.#clearLocalStorage(field);
-    }
-    document.removeEventListener('input', this.#handleInput);
-  }
-
   #handleInput = (event) => {
     const field = event.target;
     const fieldsArray = [...this.#fields];
@@ -46,6 +38,20 @@ class InputSave {
       this.#saveFormData(field);
     }
   };
+
+  #resetAndClearField(field) {
+    this.#resetFieldValues(field);
+    this.#clearLocalStorage(field);
+  }
+
+  destroy(formElement) {
+    for (const field of this.#fields) {
+      if (!formElement || formElement.contains(field)) {
+        this.#resetAndClearField(field);
+      }
+    }
+    document.removeEventListener('input', this.#handleInput);
+  }
 
   init() {
     document.addEventListener('input', this.#handleInput);
